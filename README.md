@@ -1,7 +1,7 @@
 # 3D_NotFoundError
 Сервис, предназначенный для хостинга 3Д моделей и оценки пользователями.
 ТЫК: (Будет чуть позже, если вообще будет)
-![Alt-текст](https://sun9-38.userapi.com/cfTe8c_dU08xAE9vmmVWx6lkzfHVqdqrN9wjdA/M-36QZe4fOs.jpg "Чу-чу")
+![Alt-текст](https://sun9-38.userapi.com/cfTe8c_dU08xAE9vmmVWx6lkzfHVqdqrN9wjdA/M-36QZe4fOs.jpg "Чу-чу"){:height="700px" width="400px"}
 ____
 ## Общее описание проекта
 ____
