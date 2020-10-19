@@ -1,0 +1,7 @@
+env
+server/config.py
+server/server/__pycache__
+server/base/__pycache__
+server/base/migrations
+server/web/__pycache__
+server/web/migrations
