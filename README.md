@@ -8,24 +8,36 @@
 [ТЫК]()(Пока работать нечему)
 
 Обозначения:
-:white_check_mark: Уже сделано    
+
+:white_check_mark: Уже сделано
+
 :black_square_button: Еще не сделано либо будет сделано никогда
+
 Собственно сама карта:
 ____
 
 ### Сделано, планируется или забито до лучших времен
 :white_check_mark: Дорожная карта
+
 :black_square_button: Веб-сайт
+
 :black_square_button: API
+
 :black_square_button: Настройка nginx
+
 :black_square_button: Десктопный клиент
+
 :black_square_button: Мобильный клиент
 ____
 
 ### Дорожная карта дорожной карты
+
 :white_check_mark: Базовый шаблон приложения
+
 :black_square_button: Модели ORM БД
+
 :black_square_button: Базовая внутренняя логика
+
 дополняется....
 ____
 
