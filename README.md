@@ -34,7 +34,7 @@ ____
 
 :white_check_mark: Базовый шаблон приложения
 
-:black_square_button: Модели ORM БД
+:white_check_mark: Модели ORM БД
 
 :black_square_button: Базовая внутренняя логика
 

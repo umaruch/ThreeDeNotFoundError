@@ -4,7 +4,7 @@ Django settings for server project.
 
 from pathlib import Path
 
-import config
+import server_settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -47,7 +47,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'server.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -65,7 +65,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'server.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
@@ -74,17 +74,18 @@ WSGI_APPLICATION = 'server.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config.DB_NAME,
-        'USER': config.USER,
-        'PASSWORD': config.PASSWORD,
-        'HOST': config.HOST,
-        'PORT': config.PORT
+        'NAME': server_settings.DB_NAME,
+        'USER': server_settings.USER,
+        'PASSWORD': server_settings.PASSWORD,
+        'HOST': server_settings.HOST,
+        'PORT': server_settings.PORT
     }
 }
 
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
+AUTH_USER_MODEL = 'base.User'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -120,3 +121,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR.joinpath('web/static/')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR.joinpath('media/')
+
