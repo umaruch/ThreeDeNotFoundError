@@ -36,7 +36,7 @@ ____
 
 :white_check_mark: Модели ORM БД
 
-:black_square_button: Регистрация пользователя и вход
+:white_check_mark: Регистрация пользователя и вход
 
 :black_square_button: Личный кабинет и изменение пользователя
 
