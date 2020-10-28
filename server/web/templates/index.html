@@ -1,0 +1,35 @@
+{% extends 'header.html' %}
+
+{% block page %}
+    {% for post in posts %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <a href="/posts/{{ post.id }}">
+                    <img src="{{ post.preview_image.url }}" class="card-img-top" alt="...">
+                </a>
+                <a href="/users/{{post.author.id}}"><h6 class="card-subtitle mb-2 text-muted">{{ post.author }}</h6></a>
+                <p class="card-text">{{ post.create_time }}</p>
+                {% for tag in post.tags.all %}
+                <a href="#" class="card-link">{{ tag }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if posts.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ posts.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ posts.next_page_number }}">next</a>
+                <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+{% endblock %}

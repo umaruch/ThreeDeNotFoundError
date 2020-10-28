@@ -1,3 +1,6 @@
 env
 server/config.py
 */__pycache__/
+media/post/model/*
+media/post/preview/*
+media/profile/*

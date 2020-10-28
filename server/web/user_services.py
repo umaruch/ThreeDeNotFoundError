@@ -56,8 +56,17 @@ class LoginUser(forms.Form):
         if user:
             if user.check_password(form_data['password']):
                 return user
+            raise forms.ValidationError("Password incorrect")
+        else:
+            raise forms.ValidationError("User not found")
         return None
 
-        
-        
-        
+"""Форма изменения данных пользователя"""
+class ChangeUserInfo(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'profile_image', 'description' ,'email']
+
+def get_user(user_id):
+    user = User.objects.get(id=user_id)
+    return user

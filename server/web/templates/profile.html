@@ -1,0 +1,12 @@
+{% extends 'header.html' %}
+
+{% block page %}
+<div class="media">
+    <img src="{{ profile.profile_image.url }}" class="align-self-start mr-3" alt="Нету">
+    <div class="media-body">
+        <h5 class="mt-0">{{ profile.username }}</h5>
+        <p>{{ profile.description }}</p>
+        <p class="card-text"><small class="text-muted">{{ profile.last_login }}</small></p>
+    </div>
+</div>
+{% endblock %}

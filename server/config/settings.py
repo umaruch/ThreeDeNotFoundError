@@ -65,6 +65,9 @@ TEMPLATES = [
     },
 ]
 
+PAGINATE_BY = 10
+
+
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
