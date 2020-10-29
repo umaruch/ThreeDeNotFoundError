@@ -178,8 +178,12 @@ class CreatePostView(View):
         for i in request.FILES:
             print(i)
         if form.is_valid():
-            form.save()
-            return redirect('/posts/')
+            post = form.save(False)
+            user = request.user
+            post.author = user
+            post.save()
+            form.save_m2m()
+            return redirect(f'/posts/{user.id}')
         return render(
             request,
             'base_form.html',

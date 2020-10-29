@@ -19,6 +19,9 @@
                 </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/users/{{user.id}}">Профиль</a>
+                        {% if user.is_staff %}
+                        <a class="dropdown-item" href="/admin/">Админ-панель</a>
+                        {% endif %}
                         <a class="dropdown-item" href="/users/edit">Изменить</a>
                         <a class="dropdown-item" href="/logout/">Выход</a>
                     </div>

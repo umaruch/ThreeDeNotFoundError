@@ -2,7 +2,7 @@ from django.core.paginator import Paginator
 from django.conf import settings
 from django import forms
 
-from base.models import Post
+from base.models import Post, Tag
 
 """Получение страницы с постами"""
 def get_posts_page(page):
@@ -17,9 +17,7 @@ def get_post(post_id):
 
 """Форма поста с 3Д моделью"""
 class PostForm(forms.ModelForm):
-    # author = forms.HiddenInput()
-
     class Meta:
         model = Post
-        exclude = ('create_time', 'views_count')
+        fields = ('preview_image', 'model_json', 'description', 'tags')
 
