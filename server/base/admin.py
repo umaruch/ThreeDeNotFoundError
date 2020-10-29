@@ -22,6 +22,13 @@ class TagAdmin(admin.ModelAdmin):
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ('author', 'create_time', 'get_tags', 'views_count')
+    readonly_fields = ('author', 'create_time', 'views_count')
+
+    def save_model(self, request, obj, form, change):
+        if not change:
+            # the object is being created, so set the user
+            obj.author = request.user
+        obj.save()
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):

@@ -77,6 +77,7 @@ class Post(models.Model):
     class Meta:
         verbose_name = "Зд модель"
         verbose_name_plural = "3Д модели"
+        ordering = ["create_time"]
 
 """Модель комментариев к постам"""
 class Comment(models.Model):

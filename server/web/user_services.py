@@ -26,8 +26,7 @@ class RegisterNewUser(forms.Form):
         return email
 
     """Проверка совпадения паролей"""
-    def clean_password1(self):
-        print(self.cleaned_data)
+    def clean_password(self):
         password1 = self.cleaned_data['password']
         password2 = self.cleaned_data['confirm_password']
         if len(password1)<settings.PASSWORD_LEN:
@@ -62,11 +61,62 @@ class LoginUser(forms.Form):
         return None
 
 """Форма изменения данных пользователя"""
-class ChangeUserInfo(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ['username', 'profile_image', 'description' ,'email']
+class ChangeUserInfo(forms.Form):
+    user_id = None
+    user = None
+    profile_image = forms.ImageField(required=False)
+    username = forms.CharField(
+        max_length=32,
+        required=True
+    )
+    email = forms.EmailField(required=True)
+    description = forms.CharField(required=False,
+        max_length=256,
+        widget=forms.Textarea)
+    current_password = forms.CharField(
+        required=False,
+        widget=forms.PasswordInput
+    )
+    new_password = forms.CharField(
+        required=False,
+        widget=forms.PasswordInput
+    )
 
+    """Проверка на наличие такого-же имени пользователя"""
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        if User.objects.filter(username=username).exists():
+            raise forms.ValidationError("Username already exists")
+        return username
+    
+    """Проверка наличия email"""
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError("Email already exists")
+        return email
+
+    """Проверка совпадения паролей"""
+    # def clean_password(self):
+    #     password = self.cleaned_data['current_password']
+    #     self.user = User.objects.get(id=self.user_id)
+    #     if self.user.check_password(password):
+    #         return password
+    #     else:
+    #         raise forms.ValidationError("Password incorrect")
+
+    def save(self):
+        self.user = User.objects.get(id=self.user_id)
+        data = self.cleaned_data
+        self.user.username = data.get('username')
+        self.user.email = data.get('email')
+        self.user.description = data.get('description')
+        self.profile_image = data.get('profile_image')
+        self.user.save()
+        # self.user.set_password(data.)
+        
+
+"""Получение обьекта пользователя по его id"""
 def get_user(user_id):
     user = User.objects.get(id=user_id)
     return user
