@@ -51,14 +51,16 @@ class LoginUser(forms.Form):
 
     def get_user(self):
         form_data = self.cleaned_data
-        user = User.objects.get(email=form_data['email'])
-        if user:
-            if user.check_password(form_data['password']):
-                return user
-            raise forms.ValidationError("Password incorrect")
-        else:
-            raise forms.ValidationError("User not found")
-        return None
+        try:
+            user = User.objects.get(email=form_data['email'])
+            if user:
+                if user.check_password(form_data['password']):
+                    return user
+                raise forms.ValidationError("Password incorrect")
+            else:
+                raise forms.ValidationError("User not found")
+        except User.DoesNotExist:
+            return None
 
 """Форма изменения данных пользователя"""
 class ChangeUserInfo(forms.Form):

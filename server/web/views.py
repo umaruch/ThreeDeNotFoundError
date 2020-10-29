@@ -174,7 +174,9 @@ class CreatePostView(View):
         )
 
     def post(self, request):
-        form = PostForm(request.POST, request.FILES, initial={'author': request.user})
+        form = PostForm(request.POST, request.FILES)
+        for i in request.FILES:
+            print(i)
         if form.is_valid():
             form.save()
             return redirect('/posts/')

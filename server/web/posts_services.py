@@ -17,9 +17,9 @@ def get_post(post_id):
 
 """Форма поста с 3Д моделью"""
 class PostForm(forms.ModelForm):
-    author = forms.HiddenInput()
+    # author = forms.HiddenInput()
 
     class Meta:
         model = Post
-        exclude = ('author', 'create_time', 'views_count')
+        exclude = ('create_time', 'views_count')
 

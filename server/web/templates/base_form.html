@@ -6,7 +6,7 @@
         <h5 class="card-title">{{ title }}</h5>
     </div>
   </div>
-<form action="{{ form_url }}" method="POST">
+<form action="{{ form_url }}" enctype="multipart/form-data" method="POST">
     {{ form }}
     {% csrf_token %}
     <button type="submit" class="btn btn-primary">{{ title }}</button>
