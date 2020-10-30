@@ -86,7 +86,8 @@ class Comment(models.Model):
                 on_delete=models.CASCADE)
     post = models.ForeignKey(Post,
                 verbose_name="Пост",
-                on_delete=models.CASCADE)
+                on_delete=models.CASCADE,
+                related_name='comments')
     text = models.TextField(verbose_name="Текст комментария",
                 max_length=500)
     create_time = models.DateTimeField(verbose_name="Время создания",

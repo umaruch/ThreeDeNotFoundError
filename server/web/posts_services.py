@@ -2,7 +2,7 @@ from django.core.paginator import Paginator
 from django.conf import settings
 from django import forms
 
-from base.models import Post, Tag
+from base.models import Post, Tag, Post
 
 """Получение страницы с постами"""
 def get_posts_page(page):
@@ -20,4 +20,3 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('preview_image', 'model_json', 'description', 'tags')
-

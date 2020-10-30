@@ -2,8 +2,8 @@ from django.urls import path
 from django.views.generic.base import RedirectView
 from django.contrib.auth.decorators import login_required
 
-from .views import RegisterView, LoginView, LogoutView, UserProfileView, PostsListView, PostView, UserChangeView, CreatePostView
-
+from .user_views import RegisterView, LoginView, LogoutView, UserProfileView, UserChangeView
+from .posts_views import PostsListView, PostView, CreatePostView, ChangePostView, DeletePostView
 urlpatterns = [
     # Авторизация
     path('register/', RegisterView.as_view()),
@@ -17,5 +17,8 @@ urlpatterns = [
     path('posts/', PostsListView.as_view()),
     path('posts/<int:post_id>', PostView.as_view()),
     path('posts/create', login_required(CreatePostView.as_view())),
+    path('posts/<int:post_id>/change', login_required(ChangePostView.as_view())),
+    path('posts/<int:post_id>/delete', login_required(DeletePostView.as_view())),
     # Дополнительное
+    # path('posts/<int:post_id>/comment', login_required(CreateCommentView.as_view())),
 ]

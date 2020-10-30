@@ -7,9 +7,26 @@
         <a href="/users/{{post.author.id}}">{{ post.author }}</a>
       </div>
     <div class="card-body">
+      {% if post.author == user %}
+      <a href="/posts/{{ post.id }}/change">Изменить</a>
+      {% endif %}
       <p class="card-text">{{ post.description }}</p>
       <p class="card-text"><small class="text-muted">{{ post.create_time }}</small></p>
       <p class="card-text"><small class="text-muted">Просмотры:{{ post.views_count }}</small></p>
     </div>
+</div>
+<form action="posts/{{ post.id }}/comment" enctype="multipart/form-data" method="POST">
+  {{ form }}
+  {% csrf_token %}
+  <button type="submit" class="btn btn-primary">Изменить</button>
+</form>
+{% for comment in post.comments.all %}
+<div class="media">
+  <div class="media-body">
+    <h5 class="mt-0">{{ comment.author }}</h5>
+    {{ comment.text }}
+    <p class="card-text"><small class="text-muted">{{ comment.create_time }}</small></p>
   </div>
+</div>
+{% endfor %}
 {% endblock %}
